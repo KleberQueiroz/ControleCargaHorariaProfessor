@@ -30,7 +30,7 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import br.com.marcelo.ControleCHProfessor.modelo.Faculdade;
 
-public class GUI_faculdade extends JFrame {
+public class GUI_Coordenacao_curso extends JFrame {
 
 	private JPanel contentPane;
 	private JTable jtableFaculdade;
@@ -44,7 +44,7 @@ public class GUI_faculdade extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI_faculdade frame = new GUI_faculdade();
+					GUI_Coordenacao_curso frame = new GUI_Coordenacao_curso();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,7 +56,7 @@ public class GUI_faculdade extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GUI_faculdade() {
+	public GUI_Coordenacao_curso() {
 		setFont(new Font("Arial", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Kleber\\Pictures\\icon_folhaDePagamento.jpg"));
 		setTitle("Cadastro de Faculdade");

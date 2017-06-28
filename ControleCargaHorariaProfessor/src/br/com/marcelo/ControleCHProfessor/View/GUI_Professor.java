@@ -28,14 +28,14 @@ import javax.swing.table.DefaultTableModel;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
-import br.com.marcelo.ControleCHProfessor.modelo.Faculdade;
+import br.com.marcelo.ControleCHProfessor.modelo.Professor;
 
-public class GUI_faculdade extends JFrame {
+public class GUI_Professor extends JFrame {
 
 	private JPanel contentPane;
-	private JTable jtableFaculdade;
+	private JTable jtableProfessor;
 	private JTextField textField_nome;
-	private JTextField textField_Campus;
+	private JTextField textField_email;
 
 	
 
@@ -44,7 +44,7 @@ public class GUI_faculdade extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI_faculdade frame = new GUI_faculdade();
+					GUI_Professor frame = new GUI_Professor();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,10 +56,10 @@ public class GUI_faculdade extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GUI_faculdade() {
+	public GUI_Professor() {
 		setFont(new Font("Arial", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Kleber\\Pictures\\icon_folhaDePagamento.jpg"));
-		setTitle("Cadastro de Faculdade");
+		setTitle("Cadastro de Professor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 616, 364);
 		contentPane = new JPanel();
@@ -68,8 +68,8 @@ public class GUI_faculdade extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JLabel lblCadastroDeFaculdade = new JLabel("CADASTRO DE FACULDADE");
-		lblCadastroDeFaculdade.setFont(new Font("Tahoma", Font.BOLD, 16));
+		JLabel lblCadastroDeProfessor = new JLabel("CADASTRO DE Professor");
+		lblCadastroDeProfessor.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
 		JButton btnInserir = new JButton("INSERIR");
 		btnInserir.addActionListener(new ActionListener() {
@@ -78,13 +78,13 @@ public class GUI_faculdade extends JFrame {
 				EntityManagerFactory factory = Persistence.createEntityManagerFactory("folhaPersistence");
 				EntityManager em = factory.createEntityManager();
 				
-				Faculdade faculdade= new Faculdade();
+				Professor Professor= new Professor();
 		           
-		          faculdade.setNome(textField_nome.getText());
-		          faculdade.setCampus(textField_Campus.getText());
+		          Professor.setNome(textField_nome.getText());
+		          Professor.setEmail(textField_email.getText());
 		          
 		          em.getTransaction().begin();
-		          em.persist(faculdade);
+		          em.persist(Professor);
 		          em.getTransaction().commit();
 		          
 		          
@@ -100,7 +100,7 @@ public class GUI_faculdade extends JFrame {
 				
 	/*	public void preeencherTabela(String Sql){
 			ArrayList dados = new ArrayList();
-			String []colunas = new String[]{"Id","NOME", "CAMPUS"};
+			String []colunas = new String[]{"Id","NOME", "email"};
 			
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("folhaPersistence");
 			EntityManager em = factory.createEntityManager();
@@ -120,7 +120,7 @@ public class GUI_faculdade extends JFrame {
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				((DefaultTableModel) jtableFaculdade.getModel()).removeRow(jtableFaculdade.getSelectedRow());
+				((DefaultTableModel) jtableProfessor.getModel()).removeRow(jtableProfessor.getSelectedRow());
 				
 			}
 		});
@@ -144,12 +144,12 @@ public class GUI_faculdade extends JFrame {
 		textField_nome.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_nome.setColumns(10);
 		
-		JLabel lblCampus = new JLabel("Campus");
-		lblCampus.setFont(new Font("Tahoma", Font.BOLD, 14));
+		JLabel lblemail = new JLabel("email");
+		lblemail.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		textField_Campus = new JTextField();
-		textField_Campus.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField_Campus.setColumns(10);
+		textField_email = new JTextField();
+		textField_email.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textField_email.setColumns(10);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -171,30 +171,30 @@ public class GUI_faculdade extends JFrame {
 					.addGap(12)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNome)
-						.addComponent(lblCampus))
+						.addComponent(lblemail))
 					.addGap(12)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(textField_Campus)
+						.addComponent(textField_email)
 						.addComponent(textField_nome, GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE))
 					.addContainerGap())
 				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addGap(173)
-					.addComponent(lblCadastroDeFaculdade)
+					.addComponent(lblCadastroDeProfessor)
 					.addContainerGap(192, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(12)
-					.addComponent(lblCadastroDeFaculdade)
+					.addComponent(lblCadastroDeProfessor)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textField_nome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNome))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_Campus, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblCampus))
+						.addComponent(textField_email, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblemail))
 					.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
 					.addGap(12)
@@ -206,19 +206,19 @@ public class GUI_faculdade extends JFrame {
 					.addContainerGap())
 		);
 		
-		jtableFaculdade = new JTable();
-		jtableFaculdade.setFont(new Font("Symbol", Font.PLAIN, 14));
-		jtableFaculdade.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		jtableFaculdade.setBackground(Color.LIGHT_GRAY);
-		jtableFaculdade.setModel(new DefaultTableModel(
+		jtableProfessor = new JTable();
+		jtableProfessor.setFont(new Font("Symbol", Font.PLAIN, 14));
+		jtableProfessor.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		jtableProfessor.setBackground(Color.LIGHT_GRAY);
+		jtableProfessor.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"Cod", "Nome", "Campus"
+				"Cod", "Nome", "email", "login", "CPF"
 			}
 		));
-		scrollPane.setViewportView(jtableFaculdade);
+		scrollPane.setViewportView(jtableProfessor);
 		contentPane.setLayout(gl_contentPane);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, scrollPane, jtableFaculdade}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, scrollPane, jtableProfessor}));
 	}
 }

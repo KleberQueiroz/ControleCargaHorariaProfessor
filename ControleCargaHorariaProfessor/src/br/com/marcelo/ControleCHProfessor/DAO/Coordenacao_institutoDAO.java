@@ -1,4 +1,4 @@
-package br.com.marcelo.ControleCHProfessor.modelo.DAO;
+package br.com.marcelo.ControleCHProfessor.DAO;
 
 import java.util.List;
 
@@ -7,23 +7,24 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 
-import br.com.marcelo.ControleCHProfessor.modelo.Faculdade;
+import br.com.marcelo.ControleCHProfessor.modelo.Coodenacao_instituto;
 
-public class FaculdadeDAO {
+
+public class Coordenacao_institutoDAO {
 
 	
-	private static FaculdadeDAO instance;
+	private static Coordenacao_institutoDAO instance;
 	protected EntityManager entityManager;
 
-	public static FaculdadeDAO getInstance() {
+	public static Coordenacao_institutoDAO getInstance() {
 		if (instance == null) {
-			instance = new FaculdadeDAO();
+			instance = new Coordenacao_institutoDAO();
 		}
 
 		return instance;
 	}
 
-	private FaculdadeDAO() {
+	private Coordenacao_institutoDAO() {
 		entityManager = getEntityManager();
 	}
 
@@ -36,21 +37,21 @@ public class FaculdadeDAO {
 		return entityManager;
 	}
 
-	public Faculdade getById(final int id) {
-		return entityManager.find(Faculdade.class, id);
+	public Coodenacao_instituto getById(final int id) {
+		return entityManager.find(Coodenacao_instituto.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Faculdade> findAll() {
+	public List<Coodenacao_instituto> findAll() {
 		
-		return entityManager.createQuery("FROM " + Faculdade.class.getName()).getResultList();
+		return entityManager.createQuery("FROM " + Coodenacao_instituto.class.getName()).getResultList();
 		
 	}
 
-	public void persist(Faculdade Faculdade) {
+	public void persist(Coodenacao_instituto Coordenacao_instituto) {
 		try {
 			entityManager.getTransaction().begin();
-			entityManager.persist(Faculdade);
+			entityManager.persist(Coordenacao_instituto);
 			entityManager.getTransaction().commit();
 			JOptionPane.showMessageDialog(null, "Salvo com sucesso");
 		} catch (Exception ex) {
@@ -60,10 +61,10 @@ public class FaculdadeDAO {
 		}
 	}
 
-	public void merge(Faculdade Faculdade) {
+	public void merge(Coodenacao_instituto Coordenacao_instituto) {
 		try {
 			entityManager.getTransaction().begin();
-			entityManager.merge(Faculdade);
+			entityManager.merge(Coordenacao_instituto);
 			entityManager.getTransaction().commit();
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -71,11 +72,11 @@ public class FaculdadeDAO {
 		}
 	}
 
-	public void remove(Faculdade Faculdade) {
+	public void remove(Coodenacao_instituto Coordenacao_instituto) {
 		try {
 			entityManager.getTransaction().begin();
-			Faculdade = entityManager.find(Faculdade.class, Faculdade.getId());
-			entityManager.remove(Faculdade);
+			Coordenacao_instituto = entityManager.find(Coodenacao_instituto.class, Coordenacao_instituto.getId());
+			entityManager.remove(Coordenacao_instituto);
 			entityManager.getTransaction().commit();
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -85,8 +86,8 @@ public class FaculdadeDAO {
 
 	public void removeById(final int id) {
 		try {
-			Faculdade Faculdade = getById(id);
-			remove(Faculdade);
+			Coodenacao_instituto Coordenacao_instituto = getById(id);
+			remove(Coordenacao_instituto);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

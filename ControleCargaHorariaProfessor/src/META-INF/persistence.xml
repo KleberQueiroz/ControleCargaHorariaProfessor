@@ -7,6 +7,11 @@
 		transaction-type="RESOURCE_LOCAL">
 
 		<class>br.com.marcelo.modelo.Faculdade</class>
+		<class>br.com.marcelo.modelo.Coordenacao_instituto</class>
+		<class>br.com.marcelo.modelo.Coordenacao_curso_professor</class>
+		<class>br.com.marcelo.modelo.Curso</class>
+		<class>br.com.marcelo.modelo.Disciplina</class>
+		<class>br.com.marcelo.modelo.Funcionario</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,15 +24,19 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.ViewportLayout;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.ViewportUI;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.text.View;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import br.com.marcelo.ControleCHProfessor.modelo.Faculdade;
 
-public class GUI_faculdade extends JFrame {
+public class GUI_Coordenacao_instituto extends JFrame {
 
 	private JPanel contentPane;
 	private JTable jtableFaculdade;
@@ -44,7 +50,7 @@ public class GUI_faculdade extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI_faculdade frame = new GUI_faculdade();
+					GUI_Coordenacao_instituto frame = new GUI_Coordenacao_instituto();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,7 +62,7 @@ public class GUI_faculdade extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GUI_faculdade() {
+	public GUI_Coordenacao_instituto() {
 		setFont(new Font("Arial", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Kleber\\Pictures\\icon_folhaDePagamento.jpg"));
 		setTitle("Cadastro de Faculdade");
